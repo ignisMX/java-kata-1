@@ -19,6 +19,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 /**
  *
  * @author ignis
@@ -34,5 +35,23 @@ public class DocumentServiceTest {
         List<Document> result = documentService.getAllDocuments();
         assertTrue(result.size() > 0);
         assertEquals(14, result.size());
+    }
+    
+    @Test
+    public void findDocumentByIsbnTest() throws IOException{
+    
+        Document result = documentService.findDocumentByIsbn("1313-4545-8875");
+        assertNotNull(result);
+        assertEquals("Vinum", result.getTitle());
+        assertEquals("null-gustafsson@echocat.org", result.getAuthors());
+    }
+    
+    @Test
+    public void findDocumentByAuthorTest() throws IOException{
+    
+        Document result = documentService.findDocumentByAuthor("null-ferdinand@echocat.org");
+        assertNotNull(result);
+        assertEquals("Gourmet", result.getTitle());
+        assertEquals("2365-8745-7854", result.getIsbn());
     }
 }
