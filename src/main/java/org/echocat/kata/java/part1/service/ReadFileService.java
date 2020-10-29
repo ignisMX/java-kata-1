@@ -11,11 +11,12 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
-import org.echocat.kata.java.part1.entity.Author;
+import java.util.ArrayList;
 import org.echocat.kata.java.part1.entity.Book;
+import org.echocat.kata.java.part1.entity.Author;
 import org.echocat.kata.java.part1.entity.Magazine;
+import org.echocat.kata.java.part1.entity.Document;
 import org.springframework.core.io.Resource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ResourceLoader;
@@ -66,12 +67,12 @@ public class ReadFileService {
         return authors;
     }
     
-    public List<Book> readBooks() throws IOException {
+    public List<Document> readBooks() throws IOException {
         resource = resourceLoader.getResource("classpath:books.csv");
         file = resource.getFile();
         br = new BufferedReader(new FileReader(file));
         Book book;
-        List<Book> books = new ArrayList();
+        List<Document> documents = new ArrayList();
         int counter = 0;
         while ((line = br.readLine()) != null) {
             if (counter == 0) {
@@ -87,19 +88,19 @@ public class ReadFileService {
             book.setAuthors(record[2]);
             book.setDescription(record[3]);
 
-            books.add(book);
+            documents.add(book);
         }
         
-        return books;
+        return documents;
     }
     
-    public List<Magazine> readMagazines() throws IOException {
+    public List<Document> readMagazines() throws IOException {
         resource = resourceLoader.getResource("classpath:magazines.csv");
         file = resource.getFile();
         br = new BufferedReader(new FileReader(file));
         String line;
         Magazine magazine;
-        List<Magazine> magazines = new ArrayList();
+        List<Document> documents = new ArrayList();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy");
         int counter = 0;
         while ((line = br.readLine()) != null) {
@@ -116,9 +117,9 @@ public class ReadFileService {
             magazine.setAuthors(record[2]);
             magazine.setPublishedAt(LocalDate.parse(record[3], formatter));
             
-            magazines.add(magazine);
+            documents.add(magazine);
         }
         
-        return magazines;
+        return documents;
     }
 }
