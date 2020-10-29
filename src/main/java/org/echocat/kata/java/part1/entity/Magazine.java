@@ -13,42 +13,10 @@ import javax.persistence.Id;
  *
  * @author ignis
  */
-@Entity
 public class Magazine extends Document{
     
-    @Id
-    private String isbn;
-    
-    private String title;
-    
-    private String authors;
-    
     private LocalDate publishedAt;
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(String authors) {
-        this.authors = authors;
-    }
-
+    
     public LocalDate getPublishedAt() {
         return publishedAt;
     }
@@ -59,7 +27,8 @@ public class Magazine extends Document{
 
     @Override
     public String toString() {
-        return "Magazine{" + "isbn=" + isbn + ", title=" + title + ", authors=" + authors + ", publishedAt=" + publishedAt + '}';
+        return "Magazine{" + "isbn=" + super.getIsbn() + ", title=" + super.getTitle() + 
+                ", authors=" + super.getAuthors() + ", publishedAt=" + publishedAt + '}';
     }
     
     
