@@ -7,7 +7,6 @@ package org.echocat.kata.java.part1.service;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.ArrayList;
 import org.echocat.kata.java.part1.entity.Document;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -30,9 +29,14 @@ public class DocumentService {
         
         List<Document> list = readFileService.readBooks();
         list.addAll(readFileService.readMagazines());
-        
+        printDocuments(list);
         return list;
     }
     
+    public void printDocuments(List<Document> documents){
+        for(Document document: documents){
+            System.out.println(document);        
+        }
+    }
     
 }
