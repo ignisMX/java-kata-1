@@ -6,32 +6,49 @@
 package org.echocat.kata.java.part1;
 
 import java.util.List;
-import org.junit.Test;
+import java.io.IOException;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.echocat.kata.java.part1.service.ReadFileService;
+
+import org.echocat.kata.java.part1.entity.Book;
 import org.echocat.kata.java.part1.entity.Author;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.extension.ExtendWith;
+import org.echocat.kata.java.part1.entity.Magazine;
+import org.echocat.kata.java.part1.service.ReadFileService;
+
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.transaction.annotation.Transactional;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  *
  * @author ignis
  */
-//@Transactional
-//@SpringBootTest
-//@ExtendWith(SpringExtension.class)
+@SpringBootTest
 public class ReadFileServiceTest {
     
     @Autowired
-    private ReadFileService readFileService = new ReadFileService();
+    private ReadFileService readFileService;
     
     @Test
-    public void readAuthors() throws Exception{
+    public void readAuthors() throws IOException{
         List<Author> authors = readFileService.readAuthors();
-        
         assertTrue(authors.size() > 0);
+        assertEquals(6, authors.size());
+    }
+    
+    @Test
+    public void readBooks() throws IOException{
+        List<Book> books = readFileService.readBooks();
+        assertTrue(books.size() > 0);
+        assertEquals(8, books.size());
+    }
+    
+    @Test
+    public void readMagazines() throws IOException{
+        List<Magazine> magazines = readFileService.readMagazines();
+        assertTrue(magazines.size() > 0);
+        assertEquals(6, magazines.size());
     }
 }
