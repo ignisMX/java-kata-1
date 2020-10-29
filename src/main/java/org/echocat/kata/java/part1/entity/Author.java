@@ -5,17 +5,12 @@
  */
 package org.echocat.kata.java.part1.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
 /**
  *
  * @author ignis
  */
-@Entity
 public class Author {
     
-    @Id
     private String email;
     
     private String firstName;
