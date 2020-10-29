@@ -14,7 +14,7 @@ import javax.persistence.Id;
  * @author ignis
  */
 @Entity
-public class Magazine {
+public class Magazine extends Document{
     
     @Id
     private String isbn;
