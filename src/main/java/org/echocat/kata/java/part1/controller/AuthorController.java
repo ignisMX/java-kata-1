@@ -23,12 +23,12 @@ public class AuthorController {
     @Autowired
     private ReadFileService readFileService;
 
-    @RequestMapping("/authors")
-    public String getAuthors(Model model) throws Exception{
-        List<Author> authors = readFileService.readAuthors();
-        
-        model.addAttribute("authors", authors);
-        
-        return "authors";
-    }
+//    @RequestMapping("/authors")
+//    public String getAuthors(Model model) throws Exception{
+//        List<Author> authors = readFileService.readAuthors();
+//        
+//        model.addAttribute("authors", authors);
+//        
+//        return "authors";
+//    }
 }
