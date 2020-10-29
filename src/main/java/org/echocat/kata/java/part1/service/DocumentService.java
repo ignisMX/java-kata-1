@@ -39,4 +39,30 @@ public class DocumentService {
         }
     }
     
+    public Document findDocumentByIsbn(String isbn) throws IOException{
+        List<Document> documents = getAllDocuments();
+        Document result =  null;
+        for(Document document :  documents){
+            
+            if(document.getIsbn().equals(isbn)){
+                result = document;
+            }
+        }
+        
+        return result;
+    }
+    
+    public Document findDocumentByAuthor(String author) throws IOException{
+        List<Document> documents = getAllDocuments();
+        Document result =  null;
+        for(Document document :  documents){
+            
+            if(document.getAuthors().equals(author)){
+                result = document;
+            }
+        }
+        
+        return result;
+    }
+    
 }
