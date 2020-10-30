@@ -54,4 +54,10 @@ public class DocumentServiceTest {
         assertEquals("Gourmet", result.getTitle());
         assertEquals("2365-8745-7854", result.getIsbn());
     }
+    
+    @Test
+    public void printDocumentsSortedTest() throws IOException{
+        List<Document> result = documentService.getAllDocuments();
+        documentService.printDocumentsSorted(result);
+    }
 }

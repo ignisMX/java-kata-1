@@ -6,6 +6,8 @@
 package org.echocat.kata.java.part1.service;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import org.echocat.kata.java.part1.entity.Document;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -63,6 +65,16 @@ public class DocumentService {
         }
         
         return result;
+    }
+    
+    public void printDocumentsSorted(List<Document> documents){
+        Comparator<Document> comparator = (Document documentOne, Document documentTwo) 
+                -> documentOne.getTitle().compareTo(documentTwo.getTitle());
+        
+        Collections.sort(documents, comparator);
+        System.out.println("Sorted ---");
+        documents.forEach(System.out::println);
+        System.out.println("Sorted ---");
     }
     
 }
